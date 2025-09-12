@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Management - FurShield</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/shelter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header dashboard-header">
+        <div class="container">
+            <div class="logo">
+                <a href="dashboard.html">FurShield PetCare</a>
+            </div>
+            <div class="header-actions">
+                <div class="notifications">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="../images/shelter-avatar.jpg" alt="Shelter Profile">
+                    </div>
+                    <div class="user-info">
+                        <h4>Happy Paws Shelter</h4>
+                        <p>Shelter Admin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <div class="shelter-profile">
+                    <div class="shelter-avatar">
+                        <img src="../images/shelter-avatar.jpg" alt="Shelter Profile">
+                    </div>
+                    <div class="shelter-info">
+                        <h3>Happy Paws Shelter</h3>
+                        <p>Shelter ID: SH-12345</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="fas fa-th-large"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="animals.html">
+                            <i class="fas fa-paw"></i>
+                            <span>Animals</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adoptions.html">
+                            <i class="fas fa-home"></i>
+                            <span>Adoptions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="applications.html">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Applications</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="events.html">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Events</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="volunteers.html">
+                            <i class="fas fa-users"></i>
+                            <span>Volunteers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="donations.html">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>Donations</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="medical-records.html">
+                            <i class="fas fa-file-medical"></i>
+                            <span>Medical Records</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inventory.html">
+                            <i class="fas fa-box"></i>
+                            <span>Inventory</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="messages.html">
+                            <i class="fas fa-envelope"></i>
+                            <span>Messages</span>
+                            <span class="badge">5</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="shelter-profile.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="../index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Page Header -->
+            <section class="page-header">
+                <div class="header-content">
+                    <h1>Animals Management</h1>
+                    <p>Manage and track all animals in your shelter</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="addAnimalBtn">
+                        <i class="fas fa-plus"></i> Add New Animal
+                    </button>
+                </div>
+            </section>
+
+            <!-- Search and Filter Bar -->
+            <section class="search-filter-bar">
+                <div class="search-box">
+                    <input type="text" placeholder="Search animals...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="animalType">Type:</label>
+                        <select id="animalType">
+                            <option value="all">All Types</option>
+                            <option value="dog">Dogs</option>
+                            <option value="cat">Cats</option>
+                            <option value="bird">Birds</option>
+                            <option value="small-mammal">Small Mammals</option>
+                            <option value="reptile">Reptiles</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="animalStatus">Status:</label>
+                        <select id="animalStatus">
+                            <option value="all">All Statuses</option>
+                            <option value="available">Available</option>
+                            <option value="pending">Pending Adoption</option>
+                            <option value="adopted">Adopted</option>
+                            <option value="foster">In Foster</option>
+                            <option value="medical">Medical Hold</option>
+                            <option value="quarantine">Quarantine</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="animalAge">Age:</label>
+                        <select id="animalAge">
+                            <option value="all">All Ages</option>
+                            <option value="baby">Baby (< 1 year)</option>
+                            <option value="young">Young (1-3 years)</option>
+                            <option value="adult">Adult (3-8 years)</option>
+                            <option value="senior">Senior (8+ years)</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-filter"></i> More Filters
+                    </button>
+                    <button class="btn btn-text btn-sm">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </section>
+
+            <!-- Animal Statistics -->
+            <section class="animal-statistics">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>42</h3>
+                        <p>Total Animals</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>28</h3>
+                        <p>Available</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>8</h3>
+                        <p>Pending Adoption</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>6</h3>
+                        <p>In Foster</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-medkit"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>4</h3>
+                        <p>Medical Hold</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Animal List -->
+            <section class="animal-list-section">
+                <div class="section-header">
+                    <h2>Animal List</h2>
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Grid View -->
+                <div class="animal-grid active-view">
+                    <!-- Animal Card 1 -->
+                    <div class="animal-card">
+                        <div class="animal-status available">Available</div>
+                        <div class="animal-image">
+                            <img src="../images/dog1.jpg" alt="Max">
+                            <div class="animal-actions">
+                                <button class="action-btn" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" title="Medical Records">
+                                    <i class="fas fa-file-medical"></i>
+                                </button>
+                                <button class="action-btn" title="More Options">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="animal-info">
+                            <h3>Max</h3>
+                            <p class="animal-breed">Golden Retriever</p>
+                            <div class="animal-details">
+                                <span><i class="fas fa-birthday-cake"></i> 3 years</span>
+                                <span><i class="fas fa-venus-mars"></i> Male</span>
+                            </div>
+                            <div class="animal-tags">
+                                <span class="tag">Friendly</span>
+                                <span class="tag">Trained</span>
+                                <span class="tag">Good with kids</span>
+                            </div>
+                        </div>
+                        <div class="animal-footer">
+                            <button class="btn btn-sm btn-outline">View Profile</button>
+                            <button class="btn btn-sm btn-primary">Adoption Status</button>
+                        </div>
+                    </div>
+
+                    <!-- Animal Card 2 -->
+                    <div class="animal-card">
+                        <div class="animal-status pending">Pending Adoption</div>
+                        <div class="animal-image">
+                            <img src="../images/cat1.jpg" alt="Luna">
+                            <div class="animal-actions">
+                                <button class="action-btn" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" title="Medical Records">
+                                    <i class="fas fa-file-medical"></i>
+                                </button>
+                                <button class="action-btn" title="More Options">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="animal-info">
+                            <h3>Luna</h3>
+                            <p class="animal-breed">Domestic Shorthair</p>
+                            <div class="animal-details">
+                                <span><i class="fas fa-birthday-cake"></i> 1 year</span>
+                                <span><i class="fas fa-venus-mars"></i> Female</span>
+                            </div>
+                            <div class="animal-tags">
+                                <span class="tag">Playful</span>
+                                <span class="tag">Affectionate</span>
+                                <span class="tag">Indoor</span>
+                            </div>
+                        </div>
+                        <div class="animal-footer">
+                            <button class="btn btn-sm btn-outline">View Profile</button>
+                            <button class="btn btn-sm btn-primary">Adoption Status</button>
+                        </div>
+                    </div>
+
+                    <!-- Animal Card 3 -->
+                    <div class="animal-card">
+                        <div class="animal-status medical">Medical Hold</div>
+                        <div class="animal-image">
+                            <img src="../images/dog2.jpg" alt="Rocky">
+                            <div class="animal-actions">
+                                <button class="action-btn" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" title="Medical Records">
+                                    <i class="fas fa-file-medical"></i>
+                                </button>
+                                <button class="action-btn" title="More Options">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="animal-info">
+                            <h3>Rocky</h3>
+                            <p class="animal-breed">German Shepherd</p>
+                            <div class="animal-details">
+                                <span><i class="fas fa-birthday-cake"></i> 4 years</span>
+                                <span><i class="fas fa-venus-mars"></i> Male</span>
+                            </div>
+                            <div class="animal-tags">
+                                <span class="tag">Protective</span>
+                                <span class="tag">Energetic</span>
+                                <span class="tag">Needs training</span>
+                            </div>
+                        </div>
+                        <div class="animal-footer">
+                            <button class="btn btn-sm btn-outline">View Profile</button>
+                            <button class="btn btn-sm btn-primary">Medical Status</button>
+                        </div>
+                    </div>
+
+                    <!-- Animal Card 4 -->
+                    <div class="animal-card">
+                        <div class="animal-status available">Available</div>
+                        <div class="animal-image">
+                            <img src="../images/cat2.jpg" alt="Oliver">
+                            <div class="animal-actions">
+                                <button class="action-btn" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" title="Medical Records">
+                                    <i class="fas fa-file-medical"></i>
+                                </button>
+                                <button class="action-btn" title="More Options">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="animal-info">
+                            <h3>Oliver</h3>
+                            <p class="animal-breed">Tabby</p>
+                            <div class="animal-details">
+                                <span><i class="fas fa-birthday-cake"></i> 2 years</span>
+                                <span><i class="fas fa-venus-mars"></i> Male</span>
+                            </div>
+                            <div class="animal-tags">
+                                <span class="tag">Calm</span>
+                                <span class="tag">Independent</span>
+                                <span class="tag">Litter trained</span>
+                            </div>
+                        </div>
+                        <div class="animal-footer">
+                            <button class="btn btn-sm btn-outline">View Profile</button>
+                            <button class="btn btn-sm btn-primary">Adoption Status</button>
+                        </div>
+                    </div>
+
+                    <!-- Animal Card 5 -->
+                    <div class="animal-card">
+                        <div class="animal-status foster">In Foster</div>
+                        <div class="animal-image">
+                            <img src="../images/dog3.jpg" alt="Bella">
+                            <div class="animal-actions">
+                                <button class="action-btn" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" title="Medical Records">
+                                    <i class="fas fa-file-medical"></i>
+                                </button>
+                                <button class="action-btn" title="More Options">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="animal-info">
+                            <h3>Bella</h3>
+                            <p class="animal-breed">Labrador Mix</p>
+                            <div class="animal-details">
+                                <span><i class="fas fa-birthday-cake"></i> 1 year</span>
+                                <span><i class="fas fa-venus-mars"></i> Female</span>
+                            </div>
+                            <div class="animal-tags">
+                                <span class="tag">Playful</span>
+                                <span class="tag">Friendly</span>
+                                <span class="tag">House trained</span>
+                            </div>
+                        </div>
+                        <div class="animal-footer">
+                            <button class="btn btn-sm btn-outline">View Profile</button>
+                            <button class="btn btn-sm btn-primary">Foster Status</button>
+                        </div>
+                    </div>
+
+                    <!-- Animal Card 6 -->
+                    <div class="animal-card">
+                        <div class="animal-status available">Available</div>
+                        <div class="animal-image">
+                            <img src="../images/bird1.jpg" alt="Charlie">
+                            <div class="animal-actions">
+                                <button class="action-btn" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" title="Medical Records">
+                                    <i class="fas fa-file-medical"></i>
+                                </button>
+                                <button class="action-btn" title="More Options">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="animal-info">
+                            <h3>Charlie</h3>
+                            <p class="animal-breed">Parakeet</p>
+                            <div class="animal-details">
+                                <span><i class="fas fa-birthday-cake"></i> 2 years</span>
+                                <span><i class="fas fa-venus-mars"></i> Male</span>
+                            </div>
+                            <div class="animal-tags">
+                                <span class="tag">Vocal</span>
+                                <span class="tag">Social</span>
+                                <span class="tag">Colorful</span>
+                            </div>
+                        </div>
+                        <div class="animal-footer">
+                            <button class="btn btn-sm btn-outline">View Profile</button>
+                            <button class="btn btn-sm btn-primary">Adoption Status</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- List View (Hidden by default) -->
+                <div class="animal-list">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Breed</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Status</th>
+                                <th>Arrival Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A-1001</td>
+                                <td class="animal-thumbnail">
+                                    <img src="../images/dog1.jpg" alt="Max">
+                                </td>
+                                <td>Max</td>
+                                <td>Dog</td>
+                                <td>Golden Retriever</td>
+                                <td>3 years</td>
+                                <td>Male</td>
+                                <td><span class="status-badge available">Available</span></td>
+                                <td>Sep 15, 2023</td>
+                                <td class="table-actions">
+                                    <button class="action-btn" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="Medical Records">
+                                        <i class="fas fa-file-medical"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>A-1002</td>
+                                <td class="animal-thumbnail">
+                                    <img src="../images/cat1.jpg" alt="Luna">
+                                </td>
+                                <td>Luna</td>
+                                <td>Cat</td>
+                                <td>Domestic Shorthair</td>
+                                <td>1 year</td>
+                                <td>Female</td>
+                                <td><span class="status-badge pending">Pending Adoption</span></td>
+                                <td>Sep 20, 2023</td>
+                                <td class="table-actions">
+                                    <button class="action-btn" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="Medical Records">
+                                        <i class="fas fa-file-medical"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>A-1003</td>
+                                <td class="animal-thumbnail">
+                                    <img src="../images/dog2.jpg" alt="Rocky">
+                                </td>
+                                <td>Rocky</td>
+                                <td>Dog</td>
+                                <td>German Shepherd</td>
+                                <td>4 years</td>
+                                <td>Male</td>
+                                <td><span class="status-badge medical">Medical Hold</span></td>
+                                <td>Sep 25, 2023</td>
+                                <td class="table-actions">
+                                    <button class="action-btn" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="Medical Records">
+                                        <i class="fas fa-file-medical"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>A-1004</td>
+                                <td class="animal-thumbnail">
+                                    <img src="../images/cat2.jpg" alt="Oliver">
+                                </td>
+                                <td>Oliver</td>
+                                <td>Cat</td>
+                                <td>Tabby</td>
+                                <td>2 years</td>
+                                <td>Male</td>
+                                <td><span class="status-badge available">Available</span></td>
+                                <td>Oct 1, 2023</td>
+                                <td class="table-actions">
+                                    <button class="action-btn" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="Medical Records">
+                                        <i class="fas fa-file-medical"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>A-1005</td>
+                                <td class="animal-thumbnail">
+                                    <img src="../images/dog3.jpg" alt="Bella">
+                                </td>
+                                <td>Bella</td>
+                                <td>Dog</td>
+                                <td>Labrador Mix</td>
+                                <td>1 year</td>
+                                <td>Female</td>
+                                <td><span class="status-badge foster">In Foster</span></td>
+                                <td>Oct 5, 2023</td>
+                                <td class="table-actions">
+                                    <button class="action-btn" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="Medical Records">
+                                        <i class="fas fa-file-medical"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>A-1006</td>
+                                <td class="animal-thumbnail">
+                                    <img src="../images/bird1.jpg" alt="Charlie">
+                                </td>
+                                <td>Charlie</td>
+                                <td>Bird</td>
+                                <td>Parakeet</td>
+                                <td>2 years</td>
+                                <td>Male</td>
+                                <td><span class="status-badge available">Available</span></td>
+                                <td>Oct 10, 2023</td>
+                                <td class="table-actions">
+                                    <button class="action-btn" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="Medical Records">
+                                        <i class="fas fa-file-medical"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <span class="pagination-ellipsis">...</span>
+                    <button class="pagination-btn">10</button>
+                    <button class="pagination-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Recently Added Animals -->
+            <section class="recently-added-section">
+                <div class="section-header">
+                    <h2>Recently Added Animals</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="recent-animals-carousel">
+                    <div class="carousel-container">
+                        <!-- Recent Animal 1 -->
+                        <div class="recent-animal-card">
+                            <div class="animal-image">
+                                <img src="../images/dog4.jpg" alt="Cooper">
+                            </div>
+                            <div class="animal-info">
+                                <h4>Cooper</h4>
+                                <p>Beagle, 2 years</p>
+                                <span class="status-badge available">Available</span>
+                            </div>
+                            <div class="animal-footer">
+                                <span class="added-date">Added: Today</span>
+                                <button class="btn btn-sm btn-outline">View</button>
+                            </div>
+                        </div>
+
+                        <!-- Recent Animal 2 -->
+                        <div class="recent-animal-card">
+                            <div class="animal-image">
+                                <img src="../images/cat3.jpg" alt="Milo">
+                            </div>
+                            <div class="animal-info">
+                                <h4>Milo</h4>
+                                <p>Siamese, 1 year</p>
+                                <span class="status-badge available">Available</span>
+                            </div>
+                            <div class="animal-footer">
+                                <span class="added-date">Added: Yesterday</span>
+                                <button class="btn btn-sm btn-outline">View</button>
+                            </div>
+                        </div>
+
+                        <!-- Recent Animal 3 -->
+                        <div class="recent-animal-card">
+                            <div class="animal-image">
+                                <img src="../images/rabbit1.jpg" alt="Thumper">
+                            </div>
+                            <div class="animal-info">
+                                <h4>Thumper</h4>
+                                <p>Netherland Dwarf, 1 year</p>
+                                <span class="status-badge available">Available</span>
+                            </div>
+                            <div class="animal-footer">
+                                <span class="added-date">Added: 2 days ago</span>
+                                <button class="btn btn-sm btn-outline">View</button>
+                            </div>
+                        </div>
+
+                        <!-- Recent Animal 4 -->
+                        <div class="recent-animal-card">
+                            <div class="animal-image">
+                                <img src="../images/dog5.jpg" alt="Daisy">
+                            </div>
+                            <div class="animal-info">
+                                <h4>Daisy</h4>
+                                <p>Poodle Mix, 4 years</p>
+                                <span class="status-badge medical">Medical Hold</span>
+                            </div>
+                            <div class="animal-footer">
+                                <span class="added-date">Added: 3 days ago</span>
+                                <button class="btn btn-sm btn-outline">View</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-control prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-control next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Animal Modal -->
+    <div class="modal" id="addAnimalModal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2>Add New Animal</h2>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addAnimalForm" class="form-grid">
+                    <div class="form-section">
+                        <h3>Basic Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="animalName">Name</label>
+                                <input type="text" id="animalName" name="animalName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="animalType">Animal Type</label>
+                                <select id="animalType" name="animalType" required>
+                                    <option value="" disabled selected>Select type</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="bird">Bird</option>
+                                    <option value="small-mammal">Small Mammal</option>
+                                    <option value="reptile">Reptile</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="animalBreed">Breed</label>
+                                <input type="text" id="animalBreed" name="animalBreed" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="animalAge">Age</label>
+                                <div class="age-input-group">
+                                    <input type="number" id="animalAgeValue" name="animalAgeValue" min="0" required>
+                                    <select id="animalAgeUnit" name="animalAgeUnit" required>
+                                        <option value="weeks">Weeks</option>
+                                        <option value="months">Months</option>
+                                        <option value="years" selected>Years</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="genderMale" name="animalGender" value="male" required>
+                                        <label for="genderMale">Male</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="genderFemale" name="animalGender" value="female">
+                                        <label for="genderFemale">Female</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="genderUnknown" name="animalGender" value="unknown">
+                                        <label for="genderUnknown">Unknown</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="animalSize">Size</label>
+                                <select id="animalSize" name="animalSize" required>
+                                    <option value="" disabled selected>Select size</option>
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                    <option value="xlarge">X-Large</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="animalColor">Primary Color</label>
+                                <input type="text" id="animalColor" name="animalColor" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="animalStatus">Status</label>
+                                <select id="animalStatus" name="animalStatus" required>
+                                    <option value="available">Available</option>
+                                    <option value="pending">Pending Adoption</option>
+                                    <option value="adopted">Adopted</option>
+                                    <option value="foster">In Foster</option>
+                                    <option value="medical">Medical Hold</option>
+                                    <option value="quarantine">Quarantine</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Additional Details</h3>
+                        <div class="form-group">
+                            <label for="animalDescription">Description</label>
+                            <textarea id="animalDescription" name="animalDescription" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Characteristics</label>
+                            <div class="checkbox-grid">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="friendly" name="characteristics[]" value="friendly">
+                                    <label for="friendly">Friendly</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="playful" name="characteristics[]" value="playful">
+                                    <label for="playful">Playful</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="energetic" name="characteristics[]" value="energetic">
+                                    <label for="energetic">Energetic</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="calm" name="characteristics[]" value="calm">
+                                    <label for="calm">Calm</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="trained" name="characteristics[]" value="trained">
+                                    <label for="trained">Trained</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="goodWithKids" name="characteristics[]" value="goodWithKids">
+                                    <label for="goodWithKids">Good with kids</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="goodWithDogs" name="characteristics[]" value="goodWithDogs">
+                                    <label for="goodWithDogs">Good with dogs</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="goodWithCats" name="characteristics[]" value="goodWithCats">
+                                    <label for="goodWithCats">Good with cats</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="specialNeeds" name="characteristics[]" value="specialNeeds">
+                                    <label for="specialNeeds">Special needs</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="arrivalDate">Arrival Date</label>
+                                <input type="date" id="arrivalDate" name="arrivalDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="microchipNumber">Microchip Number</label>
+                                <input type="text" id="microchipNumber" name="microchipNumber">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Photos</h3>
+                        <div class="form-group">
+                            <label for="animalPhotos">Upload Photos</label>
+                            <div class="file-upload-container">
+                                <div class="file-upload-box">
+                                    <input type="file" id="animalPhotos" name="animalPhotos" multiple accept="image/*">
+                                    <div class="upload-icon">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                    </div>
+                                    <p>Drag & drop photos or click to browse</p>
+                                    <span class="file-format">Supported formats: JPG, PNG, GIF (Max 5MB each)</span>
+                                </div>
+                                <div class="photo-preview-container">
+                                    <!-- Preview thumbnails will appear here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Medical Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Spayed/Neutered</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="spayedYes" name="spayedNeutered" value="yes" required>
+                                        <label for="spayedYes">Yes</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="spayedNo" name="spayedNeutered" value="no">
+                                        <label for="spayedNo">No</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="spayedUnknown" name="spayedNeutered" value="unknown">
+                                        <label for="spayedUnknown">Unknown</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Vaccinated</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="vaccinatedYes" name="vaccinated" value="yes" required>
+                                        <label for="vaccinatedYes">Yes</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="vaccinatedNo" name="vaccinated" value="no">
+                                        <label for="vaccinatedNo">No</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="vaccinatedPartial" name="vaccinated" value="partial">
+                                        <label for="vaccinatedPartial">Partial</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="medicalNotes">Medical Notes</label>
+                            <textarea id="medicalNotes" name="medicalNotes" rows="3"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" form="addAnimalForm">Save Animal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer dashboard-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 FurShield PetCare. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="../help.html">Help</a>
+                    <a href="../terms.html">Terms</a>
+                    <a href="../privacy.html">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/common.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/animals.js"></script>
+</body>
+</html>
