@@ -1,0 +1,51 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a7c59" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#1d3e2f" stop-opacity="0.9" />
+    </linearGradient>
+    
+    <!-- Pattern for medical symbols -->
+    <pattern id="medical-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M25 10 L35 10 L35 25 L50 25 L50 35 L35 35 L35 50 L25 50 L25 35 L10 35 L10 25 L25 25 Z" fill="#ffffff" fill-opacity="0.1" />
+    </pattern>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="400" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Pattern overlay -->
+  <rect width="400" height="400" fill="url(#medical-pattern)" />
+  
+  <!-- Decorative circles -->
+  <circle cx="50" cy="50" r="80" fill="#ffffff" fill-opacity="0.05" />
+  <circle cx="350" cy="350" r="100" fill="#ffffff" fill-opacity="0.05" />
+  
+  <!-- Stethoscope illustration -->
+  <g transform="translate(200, 180) scale(0.8)">
+    <!-- Stethoscope head -->
+    <circle cx="0" cy="80" r="25" fill="#f4f4f4" stroke="#333" stroke-width="2" />
+    <circle cx="0" cy="80" r="15" fill="#e0e0e0" stroke="#333" stroke-width="1" />
+    
+    <!-- Stethoscope tubing -->
+    <path d="M0 55 C0 30, 0 0, 0 -20 C0 -50, -60 -50, -60 -80 C-60 -95, -50 -110, -30 -110 C-10 -110, 0 -95, 0 -80 C0 -65, 60 -65, 60 -80 C60 -95, 70 -110, 90 -110 C110 -110, 120 -95, 120 -80" 
+          fill="none" stroke="#4a7c59" stroke-width="8" stroke-linecap="round" />
+    
+    <!-- Ear pieces -->
+    <path d="M-30 -110 L-35 -120" stroke="#333" stroke-width="3" stroke-linecap="round" />
+    <path d="M90 -110 L95 -120" stroke="#333" stroke-width="3" stroke-linecap="round" />
+  </g>
+  
+  <!-- Medical cross symbol -->
+  <g transform="translate(200, 320)">
+    <circle cx="0" cy="0" r="30" fill="#f9c74f" />
+    <path d="M-15 0 L15 0 M0 -15 L0 15" stroke="#4a7c59" stroke-width="8" stroke-linecap="round" />
+  </g>
+  
+  <!-- Welcome text -->
+  <g transform="translate(200, 80)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#ffffff">Welcome Back!</text>
+    <text x="0" y="30" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#ffffff">Veterinary Professional Portal</text>
+  </g>
+</svg>

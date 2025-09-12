@@ -1,0 +1,95 @@
+<svg width="100%" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="#f0f0f0"/>
+    
+    <!-- Map grid lines -->
+    <g stroke="#e0e0e0" stroke-width="1">
+        <!-- Horizontal lines -->
+        <line x1="0" y1="50" x2="100%" y2="50"/>
+        <line x1="0" y1="100" x2="100%" y2="100"/>
+        <line x1="0" y1="150" x2="100%" y2="150"/>
+        <line x1="0" y1="200" x2="100%" y2="200"/>
+        <line x1="0" y1="250" x2="100%" y2="250"/>
+        <line x1="0" y1="300" x2="100%" y2="300"/>
+        <line x1="0" y1="350" x2="100%" y2="350"/>
+        
+        <!-- Vertical lines -->
+        <line x1="10%" y1="0" x2="10%" y2="100%"/>
+        <line x1="20%" y1="0" x2="20%" y2="100%"/>
+        <line x1="30%" y1="0" x2="30%" y2="100%"/>
+        <line x1="40%" y1="0" x2="40%" y2="100%"/>
+        <line x1="50%" y1="0" x2="50%" y2="100%"/>
+        <line x1="60%" y1="0" x2="60%" y2="100%"/>
+        <line x1="70%" y1="0" x2="70%" y2="100%"/>
+        <line x1="80%" y1="0" x2="80%" y2="100%"/>
+        <line x1="90%" y1="0" x2="90%" y2="100%"/>
+    </g>
+    
+    <!-- Roads -->
+    <g stroke="#d0d0d0" stroke-width="8">
+        <line x1="20%" y1="50%" x2="80%" y2="50%"/>
+        <line x1="50%" y1="20%" x2="50%" y2="80%"/>
+    </g>
+    
+    <!-- Location marker -->
+    <g transform="translate(50%, 50%)">
+        <!-- Pin shadow -->
+        <ellipse cx="0" cy="0" rx="15" ry="5" fill="rgba(0,0,0,0.3)"/>
+        
+        <!-- Pin body -->
+        <path d="M0,-30 C-12,-30 -20,-20 -20,-10 C-20,10 0,30 0,30 C0,30 20,10 20,-10 C20,-20 12,-30 0,-30 Z" 
+              fill="#4a7c59" stroke="#3a6c49" stroke-width="2"/>
+        
+        <!-- Paw print icon -->
+        <g fill="white" transform="translate(-8, -15) scale(0.16)">
+            <circle cx="25" cy="25" r="7"/>
+            <circle cx="45" cy="25" r="7"/>
+            <circle cx="25" cy="45" r="7"/>
+            <circle cx="45" cy="45" r="7"/>
+            <ellipse cx="35" cy="65" rx="15" ry="10"/>
+        </g>
+    </g>
+    
+    <!-- Compass -->
+    <g transform="translate(90%, 10%)">
+        <circle cx="0" cy="0" r="20" fill="white" stroke="#d0d0d0" stroke-width="1"/>
+        <line x1="0" y1="-15" x2="0" y2="15" stroke="#888" stroke-width="1"/>
+        <line x1="-15" y1="0" x2="15" y2="0" stroke="#888" stroke-width="1"/>
+        <text x="0" y="-18" text-anchor="middle" font-size="10" fill="#888">N</text>
+        <text x="18" y="0" text-anchor="middle" font-size="10" fill="#888" dominant-baseline="middle">E</text>
+        <text x="0" y="18" text-anchor="middle" font-size="10" fill="#888" dominant-baseline="hanging">S</text>
+        <text x="-18" y="0" text-anchor="middle" font-size="10" fill="#888" dominant-baseline="middle">W</text>
+    </g>
+    
+    <!-- Scale -->
+    <g transform="translate(10%, 90%)">
+        <line x1="0" y1="0" x2="100" y2="0" stroke="#888" stroke-width="2"/>
+        <line x1="0" y1="-5" x2="0" y2="5" stroke="#888" stroke-width="2"/>
+        <line x1="100" y1="-5" x2="100" y2="5" stroke="#888" stroke-width="2"/>
+        <text x="50" y="15" text-anchor="middle" font-size="10" fill="#888">1 km</text>
+    </g>
+    
+    <!-- Watermark -->
+    <text x="50%" y="95%" text-anchor="middle" font-size="12" fill="#aaa">FurShield Location - Map Placeholder</text>
+    
+    <!-- Buildings -->
+    <g>
+        <!-- Building 1 -->
+        <rect x="30%" y="30%" width="5%" height="5%" fill="#d9d9d9" stroke="#bbb" stroke-width="1"/>
+        <!-- Building 2 -->
+        <rect x="60%" y="35%" width="8%" height="4%" fill="#d9d9d9" stroke="#bbb" stroke-width="1"/>
+        <!-- Building 3 -->
+        <rect x="40%" y="60%" width="6%" height="7%" fill="#d9d9d9" stroke="#bbb" stroke-width="1"/>
+        <!-- Building 4 -->
+        <rect x="65%" y="65%" width="5%" height="5%" fill="#d9d9d9" stroke="#bbb" stroke-width="1"/>
+    </g>
+    
+    <!-- Parks/Green areas -->
+    <g>
+        <ellipse cx="25%" cy="70%" rx="8%" ry="6%" fill="#c8e6c9" stroke="#a5d6a7" stroke-width="1"/>
+        <ellipse cx="75%" cy="25%" rx="7%" ry="5%" fill="#c8e6c9" stroke="#a5d6a7" stroke-width="1"/>
+    </g>
+    
+    <!-- Water -->
+    <path d="M0,10% C5%,12% 10%,8% 15%,10% L15%,20% L0,20% Z" fill="#bbdefb" stroke="#90caf9" stroke-width="1"/>
+</svg>

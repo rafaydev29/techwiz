@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications Management - FurShield</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/shelter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header dashboard-header">
+        <div class="container">
+            <div class="logo">
+                <a href="dashboard.html">FurShield PetCare</a>
+            </div>
+            <div class="header-actions">
+                <div class="notifications">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="../images/shelter-avatar.jpg" alt="Shelter Profile">
+                    </div>
+                    <div class="user-info">
+                        <h4>Happy Paws Shelter</h4>
+                        <p>Shelter Admin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <div class="shelter-profile">
+                    <div class="shelter-avatar">
+                        <img src="../images/shelter-avatar.jpg" alt="Shelter Profile">
+                    </div>
+                    <div class="shelter-info">
+                        <h3>Happy Paws Shelter</h3>
+                        <p>Shelter ID: SH-12345</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="fas fa-th-large"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="animals.html">
+                            <i class="fas fa-paw"></i>
+                            <span>Animals</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="adoptions.html">
+                            <i class="fas fa-home"></i>
+                            <span>Adoptions</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="applications.html">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Applications</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="events.html">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Events</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="volunteers.html">
+                            <i class="fas fa-users"></i>
+                            <span>Volunteers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="donations.html">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>Donations</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="medical-records.html">
+                            <i class="fas fa-file-medical"></i>
+                            <span>Medical Records</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inventory.html">
+                            <i class="fas fa-box"></i>
+                            <span>Inventory</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="messages.html">
+                            <i class="fas fa-envelope"></i>
+                            <span>Messages</span>
+                            <span class="badge">5</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="shelter-profile.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="../index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Page Header -->
+            <section class="page-header">
+                <div class="header-content">
+                    <h1>Applications Management</h1>
+                    <p>Manage adoption, volunteer, and foster applications</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="createApplicationBtn">
+                        <i class="fas fa-plus"></i> Create Application
+                    </button>
+                </div>
+            </section>
+
+            <!-- Application Statistics -->
+            <section class="application-statistics">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>24</h3>
+                        <p>Adoption Applications</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Foster Applications</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>8</h3>
+                        <p>Volunteer Applications</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>15</h3>
+                        <p>Pending Review</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>29</h3>
+                        <p>Approved This Month</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Application Tabs -->
+            <section class="application-tabs-section">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="adoption">Adoption</button>
+                    <button class="tab-btn" data-tab="foster">Foster</button>
+                    <button class="tab-btn" data-tab="volunteer">Volunteer</button>
+                    <button class="tab-btn" data-tab="templates">Templates</button>
+                </div>
+
+                <!-- Search and Filter Bar -->
+                <div class="search-filter-bar">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search applications...">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-group">
+                            <label for="statusFilter">Status:</label>
+                            <select id="statusFilter">
+                                <option value="all">All Statuses</option>
+                                <option value="new">New</option>
+                                <option value="reviewing">Reviewing</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="dateFilter">Date Range:</label>
+                            <select id="dateFilter">
+                                <option value="all">All Time</option>
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="quarter">Last 3 Months</option>
+                                <option value="year">This Year</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-filter"></i> More Filters
+                        </button>
+                        <button class="btn btn-text btn-sm">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content">
+                    <!-- Adoption Tab (Active by default) -->
+                    <div class="tab-pane active" id="adoption">
+                        <div class="data-table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Applicant</th>
+                                        <th>Animal</th>
+                                        <th>Submission Date</th>
+                                        <th>Status</th>
+                                        <th>Assigned To</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>APP-1001</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user1.jpg" alt="John Smith">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">John Smith</p>
+                                                <p class="applicant-email">john.smith@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td class="animal-info">
+                                            <div class="animal-avatar">
+                                                <img src="../images/dog1.jpg" alt="Max">
+                                            </div>
+                                            <div>
+                                                <p class="animal-name">Max</p>
+                                                <p class="animal-breed">Golden Retriever</p>
+                                            </div>
+                                        </td>
+                                        <td>Oct 15, 2023</td>
+                                        <td><span class="status-badge new">New</span></td>
+                                        <td>Sarah Johnson</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>APP-1002</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user2.jpg" alt="Emily Johnson">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">Emily Johnson</p>
+                                                <p class="applicant-email">emily.j@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td class="animal-info">
+                                            <div class="animal-avatar">
+                                                <img src="../images/cat1.jpg" alt="Luna">
+                                            </div>
+                                            <div>
+                                                <p class="animal-name">Luna</p>
+                                                <p class="animal-breed">Domestic Shorthair</p>
+                                            </div>
+                                        </td>
+                                        <td>Oct 14, 2023</td>
+                                        <td><span class="status-badge reviewing">Reviewing</span></td>
+                                        <td>Michael Brown</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>APP-1003</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user3.jpg" alt="Robert Davis">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">Robert Davis</p>
+                                                <p class="applicant-email">robert.d@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td class="animal-info">
+                                            <div class="animal-avatar">
+                                                <img src="../images/dog2.jpg" alt="Rocky">
+                                            </div>
+                                            <div>
+                                                <p class="animal-name">Rocky</p>
+                                                <p class="animal-breed">German Shepherd</p>
+                                            </div>
+                                        </td>
+                                        <td>Oct 12, 2023</td>
+                                        <td><span class="status-badge approved">Approved</span></td>
+                                        <td>Jessica Wilson</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>APP-1004</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user4.jpg" alt="Jennifer Lee">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">Jennifer Lee</p>
+                                                <p class="applicant-email">jennifer.l@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td class="animal-info">
+                                            <div class="animal-avatar">
+                                                <img src="../images/cat2.jpg" alt="Oliver">
+                                            </div>
+                                            <div>
+                                                <p class="animal-name">Oliver</p>
+                                                <p class="animal-breed">Tabby</p>
+                                            </div>
+                                        </td>
+                                        <td>Oct 10, 2023</td>
+                                        <td><span class="status-badge rejected">Rejected</span></td>
+                                        <td>David Thompson</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>APP-1005</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user5.jpg" alt="Michael Wilson">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">Michael Wilson</p>
+                                                <p class="applicant-email">michael.w@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td class="animal-info">
+                                            <div class="animal-avatar">
+                                                <img src="../images/dog3.jpg" alt="Bella">
+                                            </div>
+                                            <div>
+                                                <p class="animal-name">Bella</p>
+                                                <p class="animal-breed">Labrador Mix</p>
+                                            </div>
+                                        </td>
+                                        <td>Oct 8, 2023</td>
+                                        <td><span class="status-badge new">New</span></td>
+                                        <td>Unassigned</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <button class="pagination-btn" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <span class="pagination-ellipsis">...</span>
+                            <button class="pagination-btn">8</button>
+                            <button class="pagination-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Foster Tab -->
+                    <div class="tab-pane" id="foster">
+                        <div class="data-table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Applicant</th>
+                                        <th>Animal Type</th>
+                                        <th>Submission Date</th>
+                                        <th>Status</th>
+                                        <th>Duration</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>FOS-1001</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user6.jpg" alt="Sarah Thompson">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">Sarah Thompson</p>
+                                                <p class="applicant-email">sarah.t@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td>Kittens</td>
+                                        <td>Oct 16, 2023</td>
+                                        <td><span class="status-badge new">New</span></td>
+                                        <td>Short-term (1-4 weeks)</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>FOS-1002</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user7.jpg" alt="David Miller">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">David Miller</p>
+                                                <p class="applicant-email">david.m@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td>Senior Dogs</td>
+                                        <td>Oct 14, 2023</td>
+                                        <td><span class="status-badge reviewing">Reviewing</span></td>
+                                        <td>Long-term (3+ months)</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>FOS-1003</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user8.jpg" alt="Jessica Brown">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">Jessica Brown</p>
+                                                <p class="applicant-email">jessica.b@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td>Special Needs</td>
+                                        <td>Oct 10, 2023</td>
+                                        <td><span class="status-badge approved">Approved</span></td>
+                                        <td>Medium-term (1-3 months)</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <button class="pagination-btn" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Volunteer Tab -->
+                    <div class="tab-pane" id="volunteer">
+                        <div class="data-table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Applicant</th>
+                                        <th>Role</th>
+                                        <th>Submission Date</th>
+                                        <th>Status</th>
+                                        <th>Availability</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>VOL-1001</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user9.jpg" alt="Thomas Wilson">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">Thomas Wilson</p>
+                                                <p class="applicant-email">thomas.w@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td>Dog Walker</td>
+                                        <td>Oct 17, 2023</td>
+                                        <td><span class="status-badge new">New</span></td>
+                                        <td>Weekends</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>VOL-1002</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user10.jpg" alt="Amanda Clark">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">Amanda Clark</p>
+                                                <p class="applicant-email">amanda.c@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td>Event Coordinator</td>
+                                        <td>Oct 15, 2023</td>
+                                        <td><span class="status-badge reviewing">Reviewing</span></td>
+                                        <td>Evenings</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>VOL-1003</td>
+                                        <td class="applicant-info">
+                                            <div class="applicant-avatar">
+                                                <img src="../images/user11.jpg" alt="Kevin Martinez">
+                                            </div>
+                                            <div>
+                                                <p class="applicant-name">Kevin Martinez</p>
+                                                <p class="applicant-email">kevin.m@example.com</p>
+                                            </div>
+                                        </td>
+                                        <td>Social Media</td>
+                                        <td>Oct 12, 2023</td>
+                                        <td><span class="status-badge approved">Approved</span></td>
+                                        <td>Remote</td>
+                                        <td class="table-actions">
+                                            <button class="action-btn" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="More">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <button class="pagination-btn" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Templates Tab -->
+                    <div class="tab-pane" id="templates">
+                        <div class="templates-container">
+                            <div class="templates-header">
+                                <h3>Application Templates</h3>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-plus"></i> Create Template
+                                </button>
+                            </div>
+                            <div class="templates-grid">
+                                <!-- Template Card 1 -->
+                                <div class="template-card">
+                                    <div class="template-header">
+                                        <h4>Standard Adoption Application</h4>
+                                        <div class="template-actions">
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="Duplicate">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                            <button class="action-btn" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="template-body">
+                                        <p>Standard application form for pet adoptions with basic questions about the applicant's living situation, experience with pets, and references.</p>
+                                        <div class="template-meta">
+                                            <span><i class="fas fa-file-alt"></i> 15 questions</span>
+                                            <span><i class="fas fa-clock"></i> ~10 min to complete</span>
+                                        </div>
+                                    </div>
+                                    <div class="template-footer">
+                                        <button class="btn btn-outline btn-sm">Preview</button>
+                                        <button class="btn btn-primary btn-sm">Use Template</button>
+                                    </div>
+                                </div>
+
+                                <!-- Template Card 2 -->
+                                <div class="template-card">
+                                    <div class="template-header">
+                                        <h4>Foster Application</h4>
+                                        <div class="template-actions">
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="Duplicate">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                            <button class="action-btn" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="template-body">
+                                        <p>Application for potential foster parents including questions about schedule flexibility, experience with animal care, and housing details.</p>
+                                        <div class="template-meta">
+                                            <span><i class="fas fa-file-alt"></i> 12 questions</span>
+                                            <span><i class="fas fa-clock"></i> ~8 min to complete</span>
+                                        </div>
+                                    </div>
+                                    <div class="template-footer">
+                                        <button class="btn btn-outline btn-sm">Preview</button>
+                                        <button class="btn btn-primary btn-sm">Use Template</button>
+                                    </div>
+                                </div>
+
+                                <!-- Template Card 3 -->
+                                <div class="template-card">
+                                    <div class="template-header">
+                                        <h4>Volunteer Application</h4>
+                                        <div class="template-actions">
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="Duplicate">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                            <button class="action-btn" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="template-body">
+                                        <p>Application for shelter volunteers with questions about skills, availability, interests, and previous volunteer experience.</p>
+                                        <div class="template-meta">
+                                            <span><i class="fas fa-file-alt"></i> 10 questions</span>
+                                            <span><i class="fas fa-clock"></i> ~7 min to complete</span>
+                                        </div>
+                                    </div>
+                                    <div class="template-footer">
+                                        <button class="btn btn-outline btn-sm">Preview</button>
+                                        <button class="btn btn-primary btn-sm">Use Template</button>
+                                    </div>
+                                </div>
+
+                                <!-- Template Card 4 -->
+                                <div class="template-card">
+                                    <div class="template-header">
+                                        <h4>Special Needs Adoption</h4>
+                                        <div class="template-actions">
+                                            <button class="action-btn" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="action-btn" title="Duplicate">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                            <button class="action-btn" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="template-body">
+                                        <p>Enhanced application for adopting animals with special needs, including questions about medical care experience and home accommodations.</p>
+                                        <div class="template-meta">
+                                            <span><i class="fas fa-file-alt"></i> 18 questions</span>
+                                            <span><i class="fas fa-clock"></i> ~15 min to complete</span>
+                                        </div>
+                                    </div>
+                                    <div class="template-footer">
+                                        <button class="btn btn-outline btn-sm">Preview</button>
+                                        <button class="btn btn-primary btn-sm">Use Template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="recent-activity-section">
+                <div class="section-header">
+                    <h2>Recent Activity</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="activity-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <p><strong>New Application</strong> received from Thomas Wilson for Dog Walker position</p>
+                            <span class="timeline-time">Today, 11:45 AM</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <p><strong>New Application</strong> received from John Smith for Max</p>
+                            <span class="timeline-time">Today, 10:30 AM</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <p><strong>Application Approved</strong> for Robert Davis to adopt Rocky</p>
+                            <span class="timeline-time">Yesterday, 3:45 PM</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <p><strong>New Application</strong> received from Sarah Thompson to foster kittens</p>
+                            <span class="timeline-time">Yesterday, 2:20 PM</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <p><strong>Application Rejected</strong> for Jennifer Lee to adopt Oliver</p>
+                            <span class="timeline-time">Oct 16, 2023, 11:20 AM</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Create Application Modal -->
+    <div class="modal" id="createApplicationModal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2>Create New Application</h2>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createApplicationForm" class="form-grid">
+                    <div class="form-section">
+                        <h3>Application Type</h3>
+                        <div class="form-group">
+                            <label>Select Application Type</label>
+                            <div class="application-type-selector">
+                                <div class="application-type-option">
+                                    <input type="radio" id="adoptionType" name="applicationType" value="adoption" checked>
+                                    <label for="adoptionType" class="application-type-card">
+                                        <div class="type-icon">
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <h4>Adoption</h4>
+                                        <p>Application to adopt an animal</p>
+                                    </label>
+                                </div>
+                                <div class="application-type-option">
+                                    <input type="radio" id="fosterType" name="applicationType" value="foster">
+                                    <label for="fosterType" class="application-type-card">
+                                        <div class="type-icon">
+                                            <i class="fas fa-hand-holding-heart"></i>
+                                        </div>
+                                        <h4>Foster</h4>
+                                        <p>Application to temporarily foster an animal</p>
+                                    </label>
+                                </div>
+                                <div class="application-type-option">
+                                    <input type="radio" id="volunteerType" name="applicationType" value="volunteer">
+                                    <label for="volunteerType" class="application-type-card">
+                                        <div class="type-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <h4>Volunteer</h4>
+                                        <p>Application to volunteer at the shelter</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="adoptionFields">
+                        <h3>Adoption Details</h3>
+                        <div class="form-group">
+                            <label for="animalSelect">Select Animal</label>
+                            <select id="animalSelect" name="animalId">
+                                <option value="" disabled selected>Select an animal</option>
+                                <option value="1">Max (Golden Retriever)</option>
+                                <option value="2">Luna (Domestic Shorthair)</option>
+                                <option value="3">Rocky (German Shepherd)</option>
+                                <option value="4">Oliver (Tabby)</option>
+                                <option value="5">Bella (Labrador Mix)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="fosterFields" style="display: none;">
+                        <h3>Foster Details</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="animalType">Animal Type</label>
+                                <select id="animalType" name="animalType">
+                                    <option value="" disabled selected>Select animal type</option>
+                                    <option value="dogs">Dogs</option>
+                                    <option value="puppies">Puppies</option>
+                                    <option value="cats">Cats</option>
+                                    <option value="kittens">Kittens</option>
+                                    <option value="seniors">Senior Animals</option>
+                                    <option value="special_needs">Special Needs</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fosterDuration">Duration</label>
+                                <select id="fosterDuration" name="fosterDuration">
+                                    <option value="" disabled selected>Select duration</option>
+                                    <option value="emergency">Emergency (1-7 days)</option>
+                                    <option value="short">Short-term (1-4 weeks)</option>
+                                    <option value="medium">Medium-term (1-3 months)</option>
+                                    <option value="long">Long-term (3+ months)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="volunteerFields" style="display: none;">
+                        <h3>Volunteer Details</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="volunteerRole">Role</label>
+                                <select id="volunteerRole" name="volunteerRole">
+                                    <option value="" disabled selected>Select role</option>
+                                    <option value="dog_walker">Dog Walker</option>
+                                    <option value="cat_socializer">Cat Socializer</option>
+                                    <option value="event_coordinator">Event Coordinator</option>
+                                    <option value="social_media">Social Media</option>
+                                    <option value="cleaner">Cleaning & Maintenance</option>
+                                    <option value="admin">Administrative</option>
+                                    <option value="transport">Transport</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="availability">Availability</label>
+                                <select id="availability" name="availability">
+                                    <option value="" disabled selected>Select availability</option>
+                                    <option value="weekdays">Weekdays</option>
+                                    <option value="weekends">Weekends</option>
+                                    <option value="evenings">Evenings</option>
+                                    <option value="mornings">Mornings</option>
+                                    <option value="flexible">Flexible</option>
+                                    <option value="remote">Remote</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Applicant Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Applicant Type</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="newApplicant" name="applicantType" value="new" checked>
+                                        <label for="newApplicant">New Applicant</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="existingApplicant" name="applicantType" value="existing">
+                                        <label for="existingApplicant">Existing Applicant</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="newApplicantFields">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" id="address" name="address" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" name="state" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipCode">Zip Code</label>
+                                    <input type="text" id="zipCode" name="zipCode" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="existingApplicantFields" style="display: none;">
+                            <div class="form-group">
+                                <label for="existingApplicantSelect">Select Applicant</label>
+                                <select id="existingApplicantSelect" name="existingApplicantId">
+                                    <option value="" disabled selected>Search by name or email</option>
+                                    <option value="1">John Smith (john.smith@example.com)</option>
+                                    <option value="2">Emily Johnson (emily.j@example.com)</option>
+                                    <option value="3">Robert Davis (robert.d@example.com)</option>
+                                    <option value="4">Jennifer Lee (jennifer.l@example.com)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Application Process</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="applicationDate">Application Date</label>
+                                <input type="date" id="applicationDate" name="applicationDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="assignedTo">Assigned To</label>
+                                <select id="assignedTo" name="assignedTo">
+                                    <option value="" disabled selected>Select staff member</option>
+                                    <option value="1">Sarah Johnson</option>
+                                    <option value="2">Michael Brown</option>
+                                    <option value="3">Jessica Wilson</option>
+                                    <option value="4">David Thompson</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="applicationNotes">Notes</label>
+                            <textarea id="applicationNotes" name="applicationNotes" rows="3"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" form="createApplicationForm">Create Application</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer dashboard-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 FurShield PetCare. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="../help.html">Help</a>
+                    <a href="../terms.html">Terms</a>
+                    <a href="../privacy.html">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/common.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/applications.js"></script>
+</body>
+</html>

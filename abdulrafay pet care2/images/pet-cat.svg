@@ -1,0 +1,43 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="300" height="300" fill="#f8f9fa" rx="10" ry="10" />
+  
+  <!-- Cat silhouette -->
+  <g transform="translate(150, 150) scale(1.2)">
+    <!-- Cat body -->
+    <ellipse cx="0" cy="20" rx="60" ry="40" fill="#6c757d" />
+    
+    <!-- Cat head -->
+    <circle cx="-50" cy="-20" r="35" fill="#6c757d" />
+    
+    <!-- Cat ears -->
+    <polygon points="-75,-40 -65,-70 -45,-40" fill="#6c757d" />
+    <polygon points="-55,-40 -35,-70 -25,-40" fill="#6c757d" />
+    <polygon points="-72,-43 -65,-65 -50,-43" fill="#f8f9fa" transform="scale(0.8) translate(-10, -10)" />
+    <polygon points="-52,-43 -35,-65 -28,-43" fill="#f8f9fa" transform="scale(0.8) translate(-10, -10)" />
+    
+    <!-- Cat tail -->
+    <path d="M60,20 Q90,-20 70,-50" stroke="#6c757d" stroke-width="12" fill="none" />
+    
+    <!-- Cat legs -->
+    <rect x="-40" y="50" width="12" height="35" rx="6" fill="#6c757d" />
+    <rect x="-10" y="50" width="12" height="35" rx="6" fill="#6c757d" />
+    <rect x="20" y="50" width="12" height="35" rx="6" fill="#6c757d" />
+    <rect x="50" y="50" width="12" height="35" rx="6" fill="#6c757d" />
+    
+    <!-- Cat face -->
+    <ellipse cx="-65" cy="-20" rx="5" ry="10" fill="#212529" />
+    <ellipse cx="-35" cy="-20" rx="5" ry="10" fill="#212529" />
+    <path d="M-60,-5 Q-50,5 -40,-5" stroke="#212529" stroke-width="2" fill="none" />
+    <path d="M-70,-10 L-60,-5" stroke="#212529" stroke-width="1.5" fill="none" />
+    <path d="M-30,-10 L-40,-5" stroke="#212529" stroke-width="1.5" fill="none" />
+    <path d="M-70,0 L-60,0" stroke="#212529" stroke-width="1.5" fill="none" />
+    <path d="M-30,0 L-40,0" stroke="#212529" stroke-width="1.5" fill="none" />
+    <path d="M-70,10 L-60,5" stroke="#212529" stroke-width="1.5" fill="none" />
+    <path d="M-30,10 L-40,5" stroke="#212529" stroke-width="1.5" fill="none" />
+    
+    <!-- Cat collar -->
+    <path d="M-80,10 Q-50,20 -20,10" stroke="#17a2b8" stroke-width="6" fill="none" />
+    <circle cx="-50" cy="15" r="4" fill="#f9c74f" />
+  </g>
+</svg>

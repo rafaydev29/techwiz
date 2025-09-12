@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Results - FurShield PetCare</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/vet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header dashboard-header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">FurShield PetCare</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="../common/search.html">Search</a></li>
+                    <li class="dropdown">
+                        <a href="#">Help <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="../common/contact.html">Contact Support</a></li>
+                            <li><a href="#">User Guide</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-menu dropdown">
+                <a href="#" class="user-menu-toggle">
+                    <img src="../images/user-avatar.svg" alt="Dr. Smith" class="user-avatar">
+                    <span>Dr. Smith</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                    <li><a href="clinic-settings.html"><i class="fas fa-clinic-medical"></i> Clinic Settings</a></li>
+                    <li><a href="../common/notifications.html"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Account Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-user">
+                <img src="../images/user-avatar.svg" alt="Dr. Smith" class="user-avatar">
+                <div class="user-info">
+                    <h3>Dr. John Smith</h3>
+                    <p>Veterinarian</p>
+                    <span class="user-status online">Online</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="appointments.html"><i class="fas fa-calendar-alt"></i> Appointments</a>
+                    </li>
+                    <li>
+                        <a href="patients.html"><i class="fas fa-paw"></i> Patients</a>
+                    </li>
+                    <li>
+                        <a href="medical-records.html"><i class="fas fa-file-medical"></i> Medical Records</a>
+                    </li>
+                    <li>
+                        <a href="prescriptions.html"><i class="fas fa-prescription"></i> Prescriptions</a>
+                    </li>
+                    <li class="active">
+                        <a href="lab-results.html"><i class="fas fa-flask"></i> Lab Results</a>
+                    </li>
+                    <li>
+                        <a href="billing.html"><i class="fas fa-file-invoice-dollar"></i> Billing</a>
+                    </li>
+                    <li>
+                        <a href="messages.html"><i class="fas fa-envelope"></i> Messages</a>
+                    </li>
+                    <li>
+                        <a href="clinic-profile.html"><i class="fas fa-clinic-medical"></i> Clinic Profile</a>
+                    </li>
+                    <li>
+                        <a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="help-link"><i class="fas fa-question-circle"></i> Help & Support</a>
+                <a href="login.html" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="page-title">
+                    <h1><i class="fas fa-flask"></i> Lab Results</h1>
+                    <p>Manage and view laboratory test results</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#newLabResultModal">
+                        <i class="fas fa-plus"></i> New Lab Result
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-file-export"></i> Export
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search and Filter Bar -->
+            <div class="search-filter-bar">
+                <div class="search-box">
+                    <input type="text" placeholder="Search lab results..." class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="testTypeFilter">Test Type:</label>
+                        <select id="testTypeFilter" class="filter-select">
+                            <option value="all">All Tests</option>
+                            <option value="bloodwork">Bloodwork</option>
+                            <option value="urinalysis">Urinalysis</option>
+                            <option value="fecal">Fecal Analysis</option>
+                            <option value="imaging">Imaging</option>
+                            <option value="other">Other Tests</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="dateFilter">Date Range:</label>
+                        <select id="dateFilter" class="filter-select">
+                            <option value="all">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="statusFilter">Status:</label>
+                        <select id="statusFilter" class="filter-select">
+                            <option value="all">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                            <option value="abnormal">Abnormal</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patient Selector -->
+            <div class="patient-selector">
+                <div class="selector-header">
+                    <h2>Select Patient</h2>
+                    <div class="selector-actions">
+                        <button class="btn btn-sm"><i class="fas fa-filter"></i> Filter</button>
+                        <div class="search-mini">
+                            <input type="text" placeholder="Search patients...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="patient-cards">
+                    <div class="patient-card active">
+                        <img src="../images/pet-dog.svg" alt="Max" class="patient-avatar">
+                        <div class="patient-info">
+                            <h3>Max</h3>
+                            <p>Golden Retriever</p>
+                            <span class="patient-id">ID: P-1001</span>
+                        </div>
+                    </div>
+                    <div class="patient-card">
+                        <img src="../images/pet-cat.svg" alt="Luna" class="patient-avatar">
+                        <div class="patient-info">
+                            <h3>Luna</h3>
+                            <p>Siamese Cat</p>
+                            <span class="patient-id">ID: P-1002</span>
+                        </div>
+                    </div>
+                    <div class="patient-card">
+                        <img src="../images/pet-dog.svg" alt="Charlie" class="patient-avatar">
+                        <div class="patient-info">
+                            <h3>Charlie</h3>
+                            <p>Labrador Retriever</p>
+                            <span class="patient-id">ID: P-1003</span>
+                        </div>
+                    </div>
+                    <div class="patient-card">
+                        <img src="../images/pet-cat.svg" alt="Oliver" class="patient-avatar">
+                        <div class="patient-info">
+                            <h3>Oliver</h3>
+                            <p>Maine Coon</p>
+                            <span class="patient-id">ID: P-1004</span>
+                        </div>
+                    </div>
+                    <div class="patient-card">
+                        <img src="../images/pet-dog.svg" alt="Buddy" class="patient-avatar">
+                        <div class="patient-info">
+                            <h3>Buddy</h3>
+                            <p>Beagle</p>
+                            <span class="patient-id">ID: P-1005</span>
+                        </div>
+                    </div>
+                    <div class="patient-card">
+                        <img src="../images/pet-bird.svg" alt="Kiwi" class="patient-avatar">
+                        <div class="patient-info">
+                            <h3>Kiwi</h3>
+                            <p>Cockatiel</p>
+                            <span class="patient-id">ID: P-1006</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab Results Tabs -->
+            <div class="tabs-container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="recent">Recent Results</button>
+                    <button class="tab-btn" data-tab="pending">Pending (3)</button>
+                    <button class="tab-btn" data-tab="abnormal">Abnormal (2)</button>
+                    <button class="tab-btn" data-tab="history">Test History</button>
+                </div>
+                
+                <!-- Recent Results Tab -->
+                <div class="tab-content active" id="recent">
+                    <div class="lab-results-list">
+                        <div class="lab-result-card">
+                            <div class="result-header">
+                                <div class="result-type bloodwork">
+                                    <i class="fas fa-vial"></i>
+                                    <span>Complete Blood Count</span>
+                                </div>
+                                <div class="result-status normal">
+                                    <span>Normal</span>
+                                </div>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-info">
+                                    <p><strong>Date:</strong> Apr 10, 2023</p>
+                                    <p><strong>Ordered by:</strong> Dr. John Smith</p>
+                                    <p><strong>Lab:</strong> PetLabs Inc.</p>
+                                </div>
+                                <div class="result-summary">
+                                    <p>All values within normal range. RBC, WBC, and platelet counts normal.</p>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <button class="btn btn-sm"><i class="fas fa-eye"></i> View Full Results</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Print</button>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-result-card">
+                            <div class="result-header">
+                                <div class="result-type urinalysis">
+                                    <i class="fas fa-flask"></i>
+                                    <span>Urinalysis</span>
+                                </div>
+                                <div class="result-status abnormal">
+                                    <span>Abnormal</span>
+                                </div>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-info">
+                                    <p><strong>Date:</strong> Apr 8, 2023</p>
+                                    <p><strong>Ordered by:</strong> Dr. John Smith</p>
+                                    <p><strong>Lab:</strong> PetLabs Inc.</p>
+                                </div>
+                                <div class="result-summary">
+                                    <p>Elevated protein levels detected. Trace blood present. Specific gravity within normal range.</p>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <button class="btn btn-sm"><i class="fas fa-eye"></i> View Full Results</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Print</button>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-result-card">
+                            <div class="result-header">
+                                <div class="result-type imaging">
+                                    <i class="fas fa-x-ray"></i>
+                                    <span>X-Ray (Chest)</span>
+                                </div>
+                                <div class="result-status normal">
+                                    <span>Normal</span>
+                                </div>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-info">
+                                    <p><strong>Date:</strong> Apr 5, 2023</p>
+                                    <p><strong>Ordered by:</strong> Dr. Emily Johnson</p>
+                                    <p><strong>Lab:</strong> In-house</p>
+                                </div>
+                                <div class="result-summary">
+                                    <p>No abnormalities detected. Clear lung fields. Normal cardiac silhouette.</p>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <button class="btn btn-sm"><i class="fas fa-eye"></i> View Full Results</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Print</button>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-result-card">
+                            <div class="result-header">
+                                <div class="result-type bloodwork">
+                                    <i class="fas fa-vial"></i>
+                                    <span>Chemistry Panel</span>
+                                </div>
+                                <div class="result-status abnormal">
+                                    <span>Abnormal</span>
+                                </div>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-info">
+                                    <p><strong>Date:</strong> Apr 3, 2023</p>
+                                    <p><strong>Ordered by:</strong> Dr. John Smith</p>
+                                    <p><strong>Lab:</strong> PetLabs Inc.</p>
+                                </div>
+                                <div class="result-summary">
+                                    <p>Elevated liver enzymes (ALT, ALP). Kidney values within normal range. Glucose slightly elevated.</p>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <button class="btn btn-sm"><i class="fas fa-eye"></i> View Full Results</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pending Tab -->
+                <div class="tab-content" id="pending">
+                    <div class="lab-results-list">
+                        <div class="lab-result-card pending">
+                            <div class="result-header">
+                                <div class="result-type bloodwork">
+                                    <i class="fas fa-vial"></i>
+                                    <span>Complete Blood Count</span>
+                                </div>
+                                <div class="result-status pending">
+                                    <span>Pending</span>
+                                </div>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-info">
+                                    <p><strong>Ordered:</strong> Today</p>
+                                    <p><strong>Expected:</strong> Apr 14, 2023</p>
+                                    <p><strong>Lab:</strong> PetLabs Inc.</p>
+                                </div>
+                                <div class="result-summary">
+                                    <p>Sample collected and sent to lab. Awaiting results.</p>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <button class="btn btn-sm"><i class="fas fa-clock"></i> Check Status</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-edit"></i> Edit Order</button>
+                                <button class="btn btn-sm btn-outline text-danger"><i class="fas fa-times"></i> Cancel</button>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-result-card pending">
+                            <div class="result-header">
+                                <div class="result-type fecal">
+                                    <i class="fas fa-microscope"></i>
+                                    <span>Fecal Analysis</span>
+                                </div>
+                                <div class="result-status pending">
+                                    <span>Pending</span>
+                                </div>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-info">
+                                    <p><strong>Ordered:</strong> Yesterday</p>
+                                    <p><strong>Expected:</strong> Apr 15, 2023</p>
+                                    <p><strong>Lab:</strong> PetLabs Inc.</p>
+                                </div>
+                                <div class="result-summary">
+                                    <p>Sample collected and sent to lab. Awaiting results.</p>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <button class="btn btn-sm"><i class="fas fa-clock"></i> Check Status</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-edit"></i> Edit Order</button>
+                                <button class="btn btn-sm btn-outline text-danger"><i class="fas fa-times"></i> Cancel</button>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-result-card pending">
+                            <div class="result-header">
+                                <div class="result-type imaging">
+                                    <i class="fas fa-ultrasound"></i>
+                                    <span>Ultrasound (Abdominal)</span>
+                                </div>
+                                <div class="result-status pending">
+                                    <span>Pending</span>
+                                </div>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-info">
+                                    <p><strong>Ordered:</strong> Apr 11, 2023</p>
+                                    <p><strong>Scheduled:</strong> Apr 17, 2023</p>
+                                    <p><strong>Lab:</strong> Animal Imaging Center</p>
+                                </div>
+                                <div class="result-summary">
+                                    <p>Appointment scheduled. Patient preparation instructions sent to owner.</p>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <button class="btn btn-sm"><i class="fas fa-clock"></i> Check Status</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-edit"></i> Edit Order</button>
+                                <button class="btn btn-sm btn-outline text-danger"><i class="fas fa-times"></i> Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Abnormal Tab -->
+                <div class="tab-content" id="abnormal">
+                    <div class="lab-results-list">
+                        <div class="lab-result-card">
+                            <div class="result-header">
+                                <div class="result-type urinalysis">
+                                    <i class="fas fa-flask"></i>
+                                    <span>Urinalysis</span>
+                                </div>
+                                <div class="result-status abnormal">
+                                    <span>Abnormal</span>
+                                </div>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-info">
+                                    <p><strong>Date:</strong> Apr 8, 2023</p>
+                                    <p><strong>Ordered by:</strong> Dr. John Smith</p>
+                                    <p><strong>Lab:</strong> PetLabs Inc.</p>
+                                </div>
+                                <div class="result-summary">
+                                    <p>Elevated protein levels detected. Trace blood present. Specific gravity within normal range.</p>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <button class="btn btn-sm"><i class="fas fa-eye"></i> View Full Results</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Print</button>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-result-card">
+                            <div class="result-header">
+                                <div class="result-type bloodwork">
+                                    <i class="fas fa-vial"></i>
+                                    <span>Chemistry Panel</span>
+                                </div>
+                                <div class="result-status abnormal">
+                                    <span>Abnormal</span>
+                                </div>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-info">
+                                    <p><strong>Date:</strong> Apr 3, 2023</p>
+                                    <p><strong>Ordered by:</strong> Dr. John Smith</p>
+                                    <p><strong>Lab:</strong> PetLabs Inc.</p>
+                                </div>
+                                <div class="result-summary">
+                                    <p>Elevated liver enzymes (ALT, ALP). Kidney values within normal range. Glucose slightly elevated.</p>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <button class="btn btn-sm"><i class="fas fa-eye"></i> View Full Results</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Test History Tab -->
+                <div class="tab-content" id="history">
+                    <table class="data-table lab-history-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Test Type</th>
+                                <th>Result Status</th>
+                                <th>Ordered By</th>
+                                <th>Lab</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Apr 10, 2023</td>
+                                <td>Complete Blood Count</td>
+                                <td><span class="status normal">Normal</span></td>
+                                <td>Dr. John Smith</td>
+                                <td>PetLabs Inc.</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon" title="Print"><i class="fas fa-print"></i></button>
+                                        <button class="btn-icon" title="More Options"><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Apr 8, 2023</td>
+                                <td>Urinalysis</td>
+                                <td><span class="status abnormal">Abnormal</span></td>
+                                <td>Dr. John Smith</td>
+                                <td>PetLabs Inc.</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon" title="Print"><i class="fas fa-print"></i></button>
+                                        <button class="btn-icon" title="More Options"><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Apr 5, 2023</td>
+                                <td>X-Ray (Chest)</td>
+                                <td><span class="status normal">Normal</span></td>
+                                <td>Dr. Emily Johnson</td>
+                                <td>In-house</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon" title="Print"><i class="fas fa-print"></i></button>
+                                        <button class="btn-icon" title="More Options"><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Apr 3, 2023</td>
+                                <td>Chemistry Panel</td>
+                                <td><span class="status abnormal">Abnormal</span></td>
+                                <td>Dr. John Smith</td>
+                                <td>PetLabs Inc.</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon" title="Print"><i class="fas fa-print"></i></button>
+                                        <button class="btn-icon" title="More Options"><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mar 15, 2023</td>
+                                <td>Heartworm Test</td>
+                                <td><span class="status normal">Normal</span></td>
+                                <td>Dr. John Smith</td>
+                                <td>In-house</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon" title="Print"><i class="fas fa-print"></i></button>
+                                        <button class="btn-icon" title="More Options"><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Feb 22, 2023</td>
+                                <td>Complete Blood Count</td>
+                                <td><span class="status normal">Normal</span></td>
+                                <td>Dr. Emily Johnson</td>
+                                <td>PetLabs Inc.</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon" title="Print"><i class="fas fa-print"></i></button>
+                                        <button class="btn-icon" title="More Options"><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Jan 10, 2023</td>
+                                <td>Fecal Analysis</td>
+                                <td><span class="status normal">Normal</span></td>
+                                <td>Dr. John Smith</td>
+                                <td>PetLabs Inc.</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon" title="Print"><i class="fas fa-print"></i></button>
+                                        <button class="btn-icon" title="More Options"><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab Result Details Section -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-vial"></i> Complete Blood Count - Apr 10, 2023</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-sm"><i class="fas fa-print"></i> Print</button>
+                        <button class="btn btn-sm"><i class="fas fa-file-pdf"></i> Export PDF</button>
+                        <button class="btn btn-sm"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </div>
+                
+                <div class="lab-result-details">
+                    <div class="result-metadata">
+                        <div class="metadata-item">
+                            <span class="metadata-label">Patient:</span>
+                            <span class="metadata-value">Max (Golden Retriever)</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Owner:</span>
+                            <span class="metadata-value">Sarah Johnson</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Date Collected:</span>
+                            <span class="metadata-value">Apr 10, 2023</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Date Received:</span>
+                            <span class="metadata-value">Apr 10, 2023</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Lab:</span>
+                            <span class="metadata-value">PetLabs Inc.</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Ordered By:</span>
+                            <span class="metadata-value">Dr. John Smith</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Sample ID:</span>
+                            <span class="metadata-value">CBC-10042023-001</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-table-container">
+                        <table class="result-table">
+                            <thead>
+                                <tr>
+                                    <th>Test</th>
+                                    <th>Result</th>
+                                    <th>Reference Range</th>
+                                    <th>Units</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="result-category">
+                                    <td colspan="5">Red Blood Cell Parameters</td>
+                                </tr>
+                                <tr>
+                                    <td>RBC Count</td>
+                                    <td>6.8</td>
+                                    <td>5.5 - 8.5</td>
+                                    <td>x10^6/μL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Hemoglobin</td>
+                                    <td>15.2</td>
+                                    <td>12.0 - 18.0</td>
+                                    <td>g/dL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Hematocrit</td>
+                                    <td>45</td>
+                                    <td>37 - 55</td>
+                                    <td>%</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>MCV</td>
+                                    <td>66.2</td>
+                                    <td>60 - 77</td>
+                                    <td>fL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>MCH</td>
+                                    <td>22.4</td>
+                                    <td>19 - 25</td>
+                                    <td>pg</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>MCHC</td>
+                                    <td>33.8</td>
+                                    <td>32 - 36</td>
+                                    <td>g/dL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr class="result-category">
+                                    <td colspan="5">White Blood Cell Parameters</td>
+                                </tr>
+                                <tr>
+                                    <td>WBC Count</td>
+                                    <td>10.5</td>
+                                    <td>6.0 - 17.0</td>
+                                    <td>x10^3/μL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Neutrophils</td>
+                                    <td>6.8</td>
+                                    <td>3.0 - 11.5</td>
+                                    <td>x10^3/μL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Lymphocytes</td>
+                                    <td>2.5</td>
+                                    <td>1.0 - 4.8</td>
+                                    <td>x10^3/μL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Monocytes</td>
+                                    <td>0.7</td>
+                                    <td>0.2 - 1.5</td>
+                                    <td>x10^3/μL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Eosinophils</td>
+                                    <td>0.4</td>
+                                    <td>0.1 - 1.3</td>
+                                    <td>x10^3/μL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Basophils</td>
+                                    <td>0.1</td>
+                                    <td>0.0 - 0.2</td>
+                                    <td>x10^3/μL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr class="result-category">
+                                    <td colspan="5">Platelet Parameters</td>
+                                </tr>
+                                <tr>
+                                    <td>Platelet Count</td>
+                                    <td>325</td>
+                                    <td>200 - 500</td>
+                                    <td>x10^3/μL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                                <tr>
+                                    <td>MPV</td>
+                                    <td>9.8</td>
+                                    <td>7.0 - 12.0</td>
+                                    <td>fL</td>
+                                    <td><span class="status normal">Normal</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="result-notes">
+                        <h3>Notes & Interpretation</h3>
+                        <p>All parameters within normal reference ranges. No significant abnormalities detected. Complete blood count indicates normal red blood cell, white blood cell, and platelet parameters.</p>
+                        <p>Recommendation: No further hematologic testing required at this time. Routine follow-up as clinically indicated.</p>
+                    </div>
+                    
+                    <div class="result-history">
+                        <h3>Historical Comparison</h3>
+                        <div class="history-chart">
+                            <div class="chart-placeholder">
+                                <p>Historical trend chart would be displayed here, showing selected parameters over time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- New Lab Result Modal -->
+    <div class="modal" id="newLabResultModal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-flask"></i> Order New Lab Test</h2>
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                    <div class="form-section">
+                        <h3>Patient Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patientSelect">Patient</label>
+                                <select id="patientSelect" name="patientSelect" required>
+                                    <option value="" disabled selected>Select patient</option>
+                                    <option value="max">Max (Golden Retriever)</option>
+                                    <option value="luna">Luna (Siamese Cat)</option>
+                                    <option value="buddy">Buddy (Beagle)</option>
+                                    <option value="kiwi">Kiwi (Cockatiel)</option>
+                                    <option value="oliver">Oliver (Maine Coon)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerName">Owner</label>
+                                <input type="text" id="ownerName" name="ownerName" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="patientWeight">Weight (kg)</label>
+                                <input type="number" id="patientWeight" name="patientWeight" step="0.1" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Test Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="testCategory">Test Category</label>
+                                <select id="testCategory" name="testCategory" required>
+                                    <option value="" disabled selected>Select category</option>
+                                    <option value="bloodwork">Bloodwork</option>
+                                    <option value="urinalysis">Urinalysis</option>
+                                    <option value="fecal">Fecal Analysis</option>
+                                    <option value="imaging">Imaging</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="specificTest">Specific Test</label>
+                                <select id="specificTest" name="specificTest" required>
+                                    <option value="" disabled selected>Select test</option>
+                                    <option value="cbc">Complete Blood Count (CBC)</option>
+                                    <option value="chemistry">Chemistry Panel</option>
+                                    <option value="thyroid">Thyroid Panel</option>
+                                    <option value="heartworm">Heartworm Test</option>
+                                    <option value="urinalysis">Urinalysis</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="testPanels">Test Panels/Components</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="panel1" name="panels[]" value="panel1">
+                                    <label for="panel1">Complete Blood Count</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="panel2" name="panels[]" value="panel2">
+                                    <label for="panel2">Comprehensive Chemistry</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="panel3" name="panels[]" value="panel3">
+                                    <label for="panel3">Electrolytes</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="panel4" name="panels[]" value="panel4">
+                                    <label for="panel4">Liver Function</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="panel5" name="panels[]" value="panel5">
+                                    <label for="panel5">Kidney Function</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="panel6" name="panels[]" value="panel6">
+                                    <label for="panel6">Thyroid Panel</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Lab & Processing</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="labSelect">Laboratory</label>
+                                <select id="labSelect" name="labSelect" required>
+                                    <option value="" disabled selected>Select laboratory</option>
+                                    <option value="inhouse">In-house Lab</option>
+                                    <option value="petlabs">PetLabs Inc.</option>
+                                    <option value="animaldiagnostics">Animal Diagnostics</option>
+                                    <option value="vetlabservices">VetLab Services</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="priority">Priority</label>
+                                <select id="priority" name="priority">
+                                    <option value="routine">Routine</option>
+                                    <option value="urgent">Urgent</option>
+                                    <option value="stat">STAT</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sampleDate">Sample Collection Date</label>
+                                <input type="date" id="sampleDate" name="sampleDate" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Clinical Information</h3>
+                        <div class="form-group">
+                            <label for="diagnosis">Tentative Diagnosis</label>
+                            <input type="text" id="diagnosis" name="diagnosis">
+                        </div>
+                        <div class="form-group">
+                            <label for="clinicalSigns">Clinical Signs</label>
+                            <textarea id="clinicalSigns" name="clinicalSigns" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="medications">Current Medications</label>
+                            <textarea id="medications" name="medications" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea id="notes" name="notes" rows="2"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-outline">Save as Draft</button>
+                        <button type="submit" class="btn btn-primary">Submit Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer dashboard-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 FurShield PetCare. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Help Center</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
